@@ -138,7 +138,7 @@ const Index = () => {
       {/* MANIFESTO — layered: paper bg + drifting notebook + telescope corner + dot field + crinkle */}
       <section
         id="after-hero"
-        className="relative py-16 md:py-24 scroll-mt-16 overflow-hidden dots crinkle tx-paper tx-dust tx-light-leak"
+        className="relative py-16 md:py-24 scroll-mt-16 overflow-hidden dots crinkle"
       >
         <img
           src={texturePaper}
@@ -198,7 +198,7 @@ const Index = () => {
       </div>
 
       {/* SKILLS TOOLKIT — layered telescope + cosmos veil + scanlines */}
-      <section className="relative py-14 md:py-20 overflow-hidden scanlines tx-grunge tx-crt tx-dust">
+      <section className="relative py-14 md:py-20 overflow-hidden scanlines">
         <img
           src={atmosTelescope}
           alt=""
@@ -246,7 +246,7 @@ const Index = () => {
       </section>
 
       {/* FEATURED HIGHLIGHTS BENTO — cosmos bg + dot field + drifting notebook */}
-      <section className="relative py-14 md:py-20 overflow-hidden dots-fine tx-oil tx-bokeh tx-film-grain">
+      <section className="relative py-14 md:py-20 overflow-hidden dots-fine">
         <img
           src={textureCosmos}
           alt=""
@@ -289,7 +289,7 @@ const Index = () => {
               key={x.label}
               data-reveal
               data-reveal-delay={String(idx * 120)}
-              className="relative aspect-[3/4] overflow-hidden group dots-fine tx-film-grain tx-light-leak"
+              className="relative aspect-[3/4] overflow-hidden group dots-fine"
             >
               <img
                 src={x.src}
@@ -312,7 +312,7 @@ const Index = () => {
       </section>
 
       {/* RANDOM WINS / CURIOSITIES TEASER — paper texture wash + crinkle */}
-      <section className="relative py-12 md:py-16 overflow-hidden crinkle tx-paper tx-watercolor tx-torn tx-rust">
+      <section className="relative py-12 md:py-16 overflow-hidden crinkle">
         <img
           src={texturePaper}
           alt=""
@@ -342,7 +342,7 @@ const Index = () => {
       </section>
 
       {/* GRAND GROUPS — index, layered music plate */}
-      <section className="relative py-16 md:py-24 overflow-hidden tx-linen tx-halftone tx-smoke">
+      <section className="relative py-16 md:py-24 overflow-hidden">
         <img
           src={atmosMusic}
           alt=""
@@ -436,7 +436,7 @@ const Index = () => {
       </section>
 
       {/* CORE TRAITS BAND — layered cosmos + telescope + dots */}
-      <section className="force-light bg-navy-deep text-paper py-20 md:py-28 relative overflow-hidden grain dots-fine tx-holo tx-bokeh tx-glitch tx-film-grain">
+      <section className="force-light bg-navy-deep text-paper py-20 md:py-28 relative overflow-hidden grain dots-fine">
         <img
           src={textureCosmos}
           alt=""
