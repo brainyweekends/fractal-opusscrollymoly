@@ -49,7 +49,7 @@ const ACCENT_BG: Record<NonNullable<BentoItem["accent"]>, string> = {
 export function BentoGrid({ children, dense = true }: { children: ReactNode; dense?: boolean }) {
   return (
     <div
-      className={`grid grid-cols-6 auto-rows-[12rem] gap-3 md:gap-4 ${dense ? "[grid-auto-flow:dense]" : ""}`}
+      className={`grid grid-cols-6 auto-rows-[15rem] md:auto-rows-[17rem] gap-3 md:gap-4 ${dense ? "[grid-auto-flow:dense]" : ""}`}
     >
       {children}
     </div>
