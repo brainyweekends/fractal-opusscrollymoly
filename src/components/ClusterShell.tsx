@@ -1,10 +1,11 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useState, useEffect } from "react";
 import { NavLink, Link, useParams, useLocation } from "react-router-dom";
 import { ChevronRight, Home, ArrowLeft, ChevronDown } from "lucide-react";
 import { SiteNav, SiteFooter } from "./SiteChrome";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
   SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, SidebarTrigger,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { CLUSTERS, GRAND_GROUPS, findCluster, findSubpage, findGrandGroup } from "@/data/clusters";
 
