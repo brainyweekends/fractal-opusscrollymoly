@@ -49,7 +49,7 @@ const ACCENT_BG: Record<NonNullable<BentoItem["accent"]>, string> = {
 export function BentoGrid({ children, dense = true }: { children: ReactNode; dense?: boolean }) {
   return (
     <div
-      className={`grid grid-cols-6 auto-rows-[15rem] md:auto-rows-[17rem] gap-3 md:gap-4 ${dense ? "[grid-auto-flow:dense]" : ""}`}
+      className={`grid grid-cols-6 auto-rows-[12rem] gap-3 md:gap-4 ${dense ? "[grid-auto-flow:dense]" : ""}`}
     >
       {children}
     </div>
@@ -69,11 +69,12 @@ export function BentoCard({ item }: { item: BentoItem }) {
         onClick={() => setOpen(true)}
         className={[
           SIZE_CLASS[size],
-          "group fancy-tile tile-soft relative overflow-hidden border border-border text-left",
+          "group fancy-tile relative overflow-hidden border border-border text-left",
           "transition-all duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
           "hover:border-gold",
           "hover:-translate-y-1.5 hover:scale-[1.02] hover:rotate-[0.25deg] hover:z-10",
           "focus:outline-none focus-visible:border-gold focus-visible:ring-2 focus-visible:ring-gold/40",
+          hasImage ? "film-grain crumpled-paper stipple" : "crumpled-paper film-grain fibers stipple",
           accent === "navy" ? ACCENT_BG.navy : ACCENT_BG[accent],
         ].join(" ")}
         aria-label={`${item.title} — open detail`}
@@ -100,12 +101,10 @@ export function BentoCard({ item }: { item: BentoItem }) {
         )}
         {/* iridescent sheen on hover */}
         <span aria-hidden className="holo absolute inset-0" />
-        {/* hover crisscross + dark overlay */}
-        <span aria-hidden className="tile-hover-fx" />
 
         {/* Content */}
         <div
-          className={`tile-content h-full w-full p-5 md:p-6 flex flex-col justify-between ${
+          className={`relative h-full w-full p-5 md:p-6 flex flex-col justify-between ${
             hasImage ? "text-paper-contrast" : ""
           }`}
         >
