@@ -215,7 +215,7 @@ const Index = () => {
           <div className="flex items-end justify-between mb-8 gap-6 flex-wrap" data-reveal>
             <div>
               <p className="label-gold mb-3">§ 01 · Toolkit</p>
-              <h2 className="display-xl text-4xl md:text-6xl text-ink">
+              <h2 className="display-xl text-3xl md:text-5xl text-ink">
                 Skills I bring <span className="font-accent text-gold">to the table.</span>
               </h2>
             </div>
@@ -263,7 +263,7 @@ const Index = () => {
           <div className="flex items-end justify-between mb-8 gap-6 flex-wrap" data-reveal>
             <div>
               <p className="label-gold mb-3">§ 02 · Showcase</p>
-              <h2 className="display-xl text-4xl md:text-6xl text-ink">
+              <h2 className="display-xl text-3xl md:text-5xl text-ink">
                 Featured <span className="font-accent text-gold">work.</span>
               </h2>
             </div>
@@ -323,7 +323,7 @@ const Index = () => {
           <div className="flex items-end justify-between mb-8 gap-6 flex-wrap" data-reveal>
             <div>
               <p className="label-gold mb-3">§ 03 · Random Wins</p>
-              <h2 className="display-xl text-4xl md:text-6xl text-ink">
+              <h2 className="display-xl text-3xl md:text-5xl text-ink">
                 Belts, medals <span className="font-accent text-gold">& side quests.</span>
               </h2>
             </div>
@@ -359,7 +359,7 @@ const Index = () => {
           <div className="flex items-end justify-between mb-10 gap-6 flex-wrap" data-reveal>
             <div>
               <p className="label-gold mb-3">§ 04 · The Archive</p>
-              <h2 className="display-xl text-4xl md:text-6xl text-ink">
+              <h2 className="display-xl text-3xl md:text-5xl text-ink">
                 Every cluster, <span className="font-accent text-gold">in four groups.</span>
               </h2>
             </div>
@@ -451,7 +451,7 @@ const Index = () => {
         />
         <div className="container relative">
           <p className="label-gold mb-6" data-reveal>§ 05 · Core Traits</p>
-          <h2 className="display-xl text-5xl md:text-7xl mb-12 max-w-3xl text-balance" data-reveal>
+          <h2 className="display-xl text-4xl md:text-6xl mb-12 max-w-3xl text-balance" data-reveal>
             Five instincts <span className="font-accent text-gold">I trust</span> before any plan.
           </h2>
           <div className="grid md:grid-cols-5 gap-8">
