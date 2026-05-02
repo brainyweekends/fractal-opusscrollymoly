@@ -57,7 +57,7 @@ export const SiteNav = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`force-light fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
             ? "bg-navy-deep/85 backdrop-blur-md border-b border-paper/10 shadow-[0_8px_24px_-12px_hsl(220_60%_4%/0.5)]"
             : "bg-navy-deep/55 backdrop-blur-md border-b border-paper/10 shadow-[0_8px_24px_-12px_hsl(220_60%_4%/0.5)]"
@@ -73,17 +73,17 @@ export const SiteNav = () => {
             </span>
           </Link>
 
-          <div className="flex items-center gap-3 text-ink">
+          <div className="flex items-center gap-3 text-paper">
             <ThemeToggle className="!text-paper !border-paper/30 hover:!text-gold hover:!border-gold shadow-[0_6px_18px_-4px_hsl(220_60%_4%/0.55)]" />
             <button
               onClick={() => setOpen(true)}
-              className="flex items-center gap-2 group px-2 py-1 shadow-[0_6px_18px_-4px_hsl(220_60%_4%/0.55)]"
+              className="flex items-center gap-2 group px-2 py-1 text-paper hover:text-gold shadow-[0_6px_18px_-4px_hsl(220_60%_4%/0.55)]"
               aria-label="Open menu"
             >
-              <span className="hidden md:inline eyebrow text-paper/85 group-hover:text-gold transition-colors [text-shadow:0_2px_8px_hsl(220_60%_4%/0.65),0_1px_2px_hsl(220_60%_4%/0.8)]">
+              <span className="hidden md:inline eyebrow !text-paper group-hover:!text-gold transition-colors [text-shadow:0_2px_8px_hsl(220_60%_4%/0.65),0_1px_2px_hsl(220_60%_4%/0.8)]">
                 Index
               </span>
-              <Menu className="w-5 h-5 text-paper group-hover:text-gold transition-colors drop-shadow-[0_2px_6px_hsl(220_60%_4%/0.65)]" />
+              <Menu className="w-5 h-5 !text-paper group-hover:!text-gold transition-colors drop-shadow-[0_2px_6px_hsl(220_60%_4%/0.65)]" />
             </button>
           </div>
         </div>
