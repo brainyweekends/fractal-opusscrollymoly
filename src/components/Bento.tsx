@@ -69,12 +69,11 @@ export function BentoCard({ item }: { item: BentoItem }) {
         onClick={() => setOpen(true)}
         className={[
           SIZE_CLASS[size],
-          "group relative overflow-hidden border border-border text-left",
-          "transition-all duration-500 ease-out will-change-transform",
-          "hover:border-gold hover:shadow-[0_24px_60px_-20px_hsl(220_60%_9%/0.45)]",
-          "hover:-translate-y-1 hover:scale-[1.015] hover:z-10",
+          "group fancy-tile relative overflow-hidden border border-border text-left",
+          "transition-all duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
+          "hover:border-gold",
+          "hover:-translate-y-1.5 hover:scale-[1.02] hover:rotate-[0.25deg] hover:z-10",
           "focus:outline-none focus-visible:border-gold focus-visible:ring-2 focus-visible:ring-gold/40",
-          // layered textures — distinct in light vs dark via per-utility theme handling
           hasImage ? "film-grain crumpled-paper stipple" : "crumpled-paper film-grain fibers stipple",
           accent === "navy" ? ACCENT_BG.navy : ACCENT_BG[accent],
         ].join(" ")}
