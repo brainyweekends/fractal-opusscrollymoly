@@ -129,65 +129,12 @@ const Index = () => {
     setOpenGroups((p) => ({ ...p, [slug]: !p[slug] }));
   return (
     <PageShell>
-      {/* HERO */}
-      <section className="relative min-h-[100vh] -mt-16 bg-navy-deep text-paper overflow-hidden grain">
-        <img src={textureCosmos} alt="" className="absolute inset-0 w-full h-full object-cover opacity-60" aria-hidden />
-        <img
-          src={heroPortrait}
-          alt="Geetika Gehlot"
-          width={1080}
-          height={1920}
-          className="absolute right-0 top-0 h-full w-full md:w-2/3 object-cover object-[60%_30%] opacity-70 md:opacity-90 mix-blend-luminosity md:mix-blend-normal"
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(90deg, hsl(222 65% 6% / 0.95) 0%, hsl(222 65% 6% / 0.6) 45%, hsl(222 65% 6% / 0.2) 75%, hsl(222 65% 6% / 0.7) 100%)",
-          }}
-        />
-        <div className="relative container min-h-[100vh] pt-32 pb-16 flex flex-col justify-between">
-          <div className="flex items-baseline justify-between font-mono text-[0.65rem] uppercase tracking-[0.3em] text-paper/60">
-            <span>E-Portfolio · Edition I</span>
-            <span className="hidden md:inline">Montréal · 45.50°N · 73.57°W</span>
-            <span>MMXXVI</span>
-          </div>
-          <div className="max-w-4xl animate-fade-up">
-            <p className="label-gold mb-6">Geetika Gehlot</p>
-            <h1 className="display-xl text-[14vw] md:text-[10rem] leading-[0.85] text-paper">
-              Building<br />
-              <em className="text-gold not-italic font-light italic">worlds</em><br />
-              through science,<br />
-              art, &amp; innovation.
-            </h1>
-            <p className="mt-10 max-w-xl text-paper/80 text-lg leading-relaxed font-display italic">
-              Scientist · Researcher · Creator · Musician · Storyteller · Innovator.
-              A 15-year-old multidisciplinary researcher, creator, and future
-              physicist-engineer.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-10 border-t border-paper/20 pt-8">
-            {[
-              ["15", "Years"],
-              ["02", "Countries"],
-              ["12", "Disciplines"],
-              ["100+", "Awards"],
-              ["03", "Languages"],
-            ].map(([v, l]) => (
-              <div key={l}>
-                <div className="font-display text-3xl md:text-5xl text-paper">{v}</div>
-                <div className="eyebrow text-paper/60 mt-1">{l}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-[0.6rem] tracking-[0.3em] text-paper/40 animate-shimmer">
-          ↓ TURN THE PAGE
-        </div>
-      </section>
+      {/* HERO — fullscreen navigable slideshow */}
+      <HeroSlideshow slides={HERO_SLIDES} />
 
       {/* MANIFESTO */}
-      <section className="container py-24 md:py-32">
+      <section id="after-hero" className="container py-24 md:py-32 scroll-mt-16">
+
         <div className="grid md:grid-cols-12 gap-10">
           <div className="md:col-span-3">
             <p className="label-gold">§ 00 · Foreword</p>
