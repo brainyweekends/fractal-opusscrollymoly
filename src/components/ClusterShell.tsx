@@ -56,10 +56,9 @@ function useScrollSpy(ids: string[]) {
 }
 
 // short glyph for collapsed sidebar (Roman-numeral-ish, sleek)
-function shortGlyph(label: string, index: number): string {
-  const ROMAN = ["·", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
-  if (index === 0) return "§"; // overview
-  return ROMAN[index] ?? label.slice(0, 1).toUpperCase();
+function railGlyph(index: number): string {
+  // small two-digit numerals — clean, consistent width
+  return String(index + 1).padStart(2, "0");
 }
 
 function ClusterSidebar({ clusterSlug }: { clusterSlug: string }) {
