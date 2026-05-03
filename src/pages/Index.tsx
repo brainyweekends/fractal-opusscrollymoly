@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import {
   Atom, Cpu, Music2, Mic2, Code2, PenTool, Languages, Trophy,
   Camera, Wand2, Brain, Palette,
