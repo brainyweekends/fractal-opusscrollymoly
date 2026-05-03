@@ -12,15 +12,30 @@ import heroFallback from "@/assets/atmos-notebook.jpg";
 import heroPortrait from "@/assets/hero-portrait.jpg";
 import { toast } from "@/hooks/use-toast";
 
-function SubpageHeader({ kicker, num, title, lede }: { kicker: string; num: string; title: string; lede?: string }) {
+function SubpageHeader({ kicker, num, title, lede, portrait }: { kicker: string; num: string; title: string; lede?: string; portrait?: string }) {
   return (
-    <header className="px-4 md:px-12 pt-10 md:pt-14 pb-8 max-w-5xl">
+    <header className="px-4 md:px-12 pt-10 md:pt-14 pb-8 max-w-6xl">
       <div className="flex items-baseline gap-4 mb-6">
         <span className="font-mono text-xs tracking-[0.3em] text-gold">§ {num}</span>
         <span className="eyebrow">{kicker}</span>
       </div>
-      <h1 className="display-xl text-4xl md:text-6xl text-ink text-balance">{title}</h1>
-      {lede && <p className="mt-6 text-lg text-ink-soft font-display italic max-w-2xl leading-relaxed">{lede}</p>}
+      <div className="grid md:grid-cols-[1fr,auto] gap-8 items-start">
+        <div>
+          <h1 className="display-xl text-4xl md:text-6xl text-ink text-balance">{title}</h1>
+          {lede && <p className="mt-6 text-lg text-ink-soft font-display italic max-w-2xl leading-relaxed">{lede}</p>}
+        </div>
+        {portrait && (
+          <figure className="relative shrink-0 w-32 md:w-44 aspect-[3/4] overflow-hidden border border-border bg-paper-deep">
+            <img
+              src={portrait}
+              alt="Geetika Gehlot — portrait"
+              className="absolute inset-0 w-full h-full object-cover object-[60%_30%]"
+              loading="lazy"
+            />
+            <span className="absolute inset-2 border border-paper/20 pointer-events-none" />
+          </figure>
+        )}
+      </div>
       <div className="rule-gold mt-10" />
     </header>
   );
