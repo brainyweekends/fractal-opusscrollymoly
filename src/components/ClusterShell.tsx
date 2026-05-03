@@ -215,6 +215,10 @@ function ClusterSidebar({ clusterSlug }: { clusterSlug: string }) {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
+  );
+}
 
 export function Breadcrumbs({ cluster, sub }: { cluster: string; sub?: string }) {
   const c = findCluster(cluster);
