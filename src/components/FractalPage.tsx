@@ -252,7 +252,7 @@ export function FractalPage() {
     }
   }, [sub, c]);
 
-  if (!c) return <Navigate to="/dashboard" replace />;
+  if (!c) return <Navigate to="/" replace />;
 
   const showPortrait = ["about", "works", "contact"].includes(c.slug);
 
