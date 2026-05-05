@@ -551,11 +551,11 @@ function renderInner(s: Subpage, c: Cluster): ReactNode {
   switch (s.kind) {
     case "overview":   return <OverviewInner cluster={c} />;
     case "highlights": return <HighlightsInner cluster={c} />;
-    case "evidence":   return <EvidenceInner />;
-    case "media":      return <MediaInner />;
-    case "reflection": return <ReflectionInner />;
+    case "evidence":   return <EvidenceInner cluster={c} />;
+    case "media":      return <MediaInner cluster={c} />;
+    case "reflection": return <ReflectionInner cluster={c} />;
     case "related":    return <RelatedRail clusterSlug={c.slug} />;
-    case "topic":      return <TopicInner topicLabel={s.label} />;
+    case "topic":      return <TopicInner topicLabel={s.label} topicSlug={s.slug} />;
     default:           return null;
   }
 }
