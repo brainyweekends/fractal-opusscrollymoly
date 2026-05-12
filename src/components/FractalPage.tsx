@@ -2,8 +2,9 @@ import { ReactNode, useEffect, useState } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import {
   ArrowUpRight, FileText, Image as ImgIcon, Sparkles, Quote, Link2, BookOpen,
-  Mail, Linkedin, Github, Send, MapPin,
+  Mail, Linkedin, Github, Send, MapPin, Globe, Phone, Calendar, Briefcase, GraduationCap, Award, Eye,
 } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { ClusterShell } from "./ClusterShell";
 import { PullQuote, Marginalia } from "./Editorial";
 import { Bento, type BentoItem } from "./Bento";
