@@ -36,7 +36,7 @@ const SIZE_CLASS: Record<BentoSize, string> = {
   sm:   "col-span-6 sm:col-span-3 lg:col-span-2 row-span-1",
   md:   "col-span-6 sm:col-span-3 row-span-1",
   lg:   "col-span-6 sm:col-span-3 row-span-2",
-  xl:   "col-span-6 lg:col-span-4 row-span-2",
+  xl:   "col-span-6 row-span-2",
   wide: "col-span-6 row-span-1",
 };
 

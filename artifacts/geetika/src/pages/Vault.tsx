@@ -1,20 +1,16 @@
 import { ReactNode, useState } from "react";
 import {
   FileText, Eye, ArrowUpRight, Mail, Globe, Linkedin, Calendar, Briefcase,
-  GraduationCap, Award, MapPin, Send,
+  GraduationCap, Award, MapPin, Download, BookOpen, ExternalLink,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { PageShell } from "@/components/SiteChrome";
-import { MoodMosaic } from "@/components/MoodMosaic";
-import { findCluster } from "@/data/clusters";
 import { useReveal } from "@/hooks/useReveal";
-import { toast } from "@/hooks/use-toast";
 
 type IconCmp = React.ComponentType<{ className?: string }>;
 
 const Vault = () => {
   useReveal();
-  const cluster = findCluster("vault")!;
 
   return (
     <PageShell>
@@ -31,38 +27,94 @@ const Vault = () => {
           </h1>
         </div>
         <p className="mt-8 max-w-2xl text-lg md:text-xl text-ink-soft leading-relaxed font-display italic animate-fade-up">
-          Open the full interactive CV below.
+          The full record — interactive CV, downloadable PDF, and a printable résumé.
         </p>
         <div className="rule-gold mt-10" />
       </section>
 
-      <MoodMosaic topics={cluster.topics} />
-
-      <section className="container pb-16">
-        <CVLightbox />
+      <section className="container pb-16 space-y-8">
+        <CVFeatureBlock />
+        <CVDocumentGrid />
       </section>
     </PageShell>
   );
 };
 
-function CVLightbox() {
+function CVFeatureBlock() {
   return (
     <Dialog>
       <DialogTrigger asChild>
         <button
           type="button"
-          className="group inline-flex items-center gap-3 rounded-xl border border-border bg-card px-5 py-4 text-left shadow-sm transition hover:border-gold hover:shadow-md"
+          className="group fancy-tile w-full text-left border border-border bg-paper hover:border-gold transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:scale-[1.005] overflow-hidden"
         >
-          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-gold/10 text-gold">
-            <Eye className="h-5 w-5" />
-          </span>
-          <span className="flex flex-col">
-            <span className="font-display text-base text-ink">View CV</span>
-            <span className="text-xs text-ink-soft">Open the full interactive résumé</span>
-          </span>
-          <ArrowUpRight className="ml-2 h-4 w-4 text-ink-soft transition group-hover:text-gold" />
+          <div className="grid md:grid-cols-[1fr,380px]">
+            {/* Left — CTA */}
+            <div className="p-8 md:p-12 flex flex-col justify-between gap-8">
+              <div>
+                <p className="label-gold mb-4">Curriculum Vitae · 2025</p>
+                <h2 className="font-display text-3xl md:text-5xl text-ink group-hover:text-gold transition-colors duration-500 leading-tight">
+                  Geetika Gehlot
+                </h2>
+                <p className="mt-3 font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">
+                  Multidisciplinary creator · Montréal, QC
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {["Robotics", "STEM Research", "Music", "Writing", "Leadership", "Visual Art"].map((tag) => (
+                  <span key={tag} className="inline-block border border-border px-3 py-1 font-mono text-[0.6rem] uppercase tracking-widest text-ink-soft group-hover:border-gold/60 transition-colors duration-500">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/10 text-gold border border-gold/30">
+                  <Eye className="h-5 w-5" />
+                </span>
+                <div>
+                  <p className="font-display text-lg text-ink group-hover:text-gold transition-colors duration-300">Open Interactive CV</p>
+                  <p className="text-xs text-ink-soft font-mono tracking-wide">Click to expand the full record</p>
+                </div>
+                <ArrowUpRight className="ml-auto h-5 w-5 text-ink-soft group-hover:text-gold group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-500" />
+              </div>
+            </div>
+
+            {/* Right — mini peek preview */}
+            <div className="hidden md:block border-l border-border bg-paper-deep p-6 overflow-hidden relative">
+              <div className="absolute inset-0 grain opacity-40 pointer-events-none" />
+              <p className="label-gold mb-4 text-[0.55rem]">Preview</p>
+              <div className="space-y-3 relative z-10">
+                <div className="flex items-center gap-2">
+                  <span className="h-8 w-8 rounded-full bg-gradient-to-br from-gold/40 to-navy-deep/30 border border-border shrink-0" />
+                  <div>
+                    <p className="font-display text-sm text-ink">Geetika Gehlot</p>
+                    <p className="font-mono text-[0.55rem] text-ink-soft">Student · she/her</p>
+                  </div>
+                </div>
+                <div className="rule-gold opacity-60" />
+                <div className="space-y-2">
+                  {[
+                    { label: "STEM & Robotics", sub: "FRC Team 7700" },
+                    { label: "VP, YMCA Youth Co-op", sub: "Leadership" },
+                    { label: "Hindustani Vocals", sub: "Classical performer" },
+                    { label: "AP Track · Montréal", sub: "Education" },
+                  ].map((row) => (
+                    <div key={row.label} className="flex items-start gap-2 opacity-70">
+                      <span className="w-1 h-1 rounded-full bg-gold mt-2 shrink-0" />
+                      <div>
+                        <p className="font-display text-xs text-ink leading-tight">{row.label}</p>
+                        <p className="font-mono text-[0.5rem] uppercase tracking-wider text-ink-soft">{row.sub}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-paper-deep to-transparent" />
+              </div>
+            </div>
+          </div>
         </button>
       </DialogTrigger>
+
       <DialogContent className="max-w-6xl w-[calc(100vw-1.25rem)] sm:w-[calc(100vw-2rem)] max-h-[calc(100vh-1.25rem)] sm:max-h-[calc(100vh-2rem)] p-0 overflow-hidden bg-paper">
         <DialogTitle className="sr-only">Curriculum Vitae: Geetika Gehlot</DialogTitle>
         <DialogDescription className="sr-only">Full CV with experience, education, skills, and contact.</DialogDescription>
@@ -71,6 +123,58 @@ function CVLightbox() {
         </div>
       </DialogContent>
     </Dialog>
+  );
+}
+
+function CVDocumentGrid() {
+  const docs = [
+    {
+      icon: Download,
+      label: "Download CV",
+      sub: "Full curriculum vitae · PDF",
+      href: "#",
+      badge: "PDF · A4",
+    },
+    {
+      icon: BookOpen,
+      label: "One-Page Résumé",
+      sub: "Condensed single-page version",
+      href: "#",
+      badge: "PDF · Letter",
+    },
+    {
+      icon: ExternalLink,
+      label: "LinkedIn Profile",
+      sub: "Connect or view professional timeline",
+      href: "https://www.linkedin.com/",
+      badge: "External",
+    },
+  ];
+
+  return (
+    <div className="grid sm:grid-cols-3 gap-3">
+      {docs.map(({ icon: I, label, sub, href, badge }) => (
+        <a
+          key={label}
+          href={href}
+          target={href.startsWith("http") ? "_blank" : undefined}
+          rel="noreferrer"
+          className="fancy-tile group block border border-border bg-paper hover:border-gold transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 overflow-hidden p-6"
+        >
+          <div className="flex items-start justify-between mb-6">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/10 text-gold border border-gold/20">
+              <I className="h-4 w-4" />
+            </span>
+            <span className="font-mono text-[0.55rem] uppercase tracking-widest border border-border px-2 py-1 text-ink-soft group-hover:border-gold/50 transition-colors duration-500">
+              {badge}
+            </span>
+          </div>
+          <p className="font-display text-lg text-ink group-hover:text-gold transition-colors duration-300 leading-tight">{label}</p>
+          <p className="mt-1 font-mono text-[0.6rem] uppercase tracking-wider text-ink-soft">{sub}</p>
+          <ArrowUpRight className="mt-4 h-4 w-4 text-ink-soft group-hover:text-gold group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-500" />
+        </a>
+      ))}
+    </div>
   );
 }
 

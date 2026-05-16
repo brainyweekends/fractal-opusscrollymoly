@@ -79,11 +79,17 @@ function MosaicBox({ topic, span, tint }: { topic: TopicData; span: string; tint
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className={`group relative ${span} min-h-[140px] overflow-hidden rounded-2xl border border-border bg-gradient-to-br ${tint} transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-gold hover:shadow-[0_18px_40px_-24px_hsl(220_60%_4%/0.4)] cursor-pointer`}
+        className={[
+          `group relative ${span} min-h-[120px] overflow-hidden border border-border`,
+          `bg-gradient-to-br ${tint}`,
+          "fancy-tile",
+          "transition-all duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
+          "hover:border-gold hover:-translate-y-1 hover:scale-[1.015] hover:z-10",
+          "cursor-pointer text-left",
+        ].join(" ")}
       >
-        <span className="absolute inset-0 ring-1 ring-inset ring-paper/30 mix-blend-overlay pointer-events-none" />
-        <span className="absolute inset-0 holo opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        <div className="absolute inset-0 p-4 md:p-5 flex flex-col justify-end">
+        <span className="absolute inset-0 ring-1 ring-inset ring-paper/20 mix-blend-overlay pointer-events-none z-0" />
+        <div className="absolute inset-0 p-4 md:p-5 flex flex-col justify-end z-[1]">
           <h3
             className={`font-display text-ink leading-tight transition-colors duration-300 group-hover:text-gold ${
               isLarge ? "text-2xl md:text-3xl" : "text-lg md:text-xl"
@@ -98,7 +104,7 @@ function MosaicBox({ topic, span, tint }: { topic: TopicData; span: string; tint
           )}
         </div>
         {topic.embed?.type === "youtube" && (
-          <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-navy-deep/60 flex items-center justify-center">
+          <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-navy-deep/60 flex items-center justify-center z-[3]">
             <Play className="w-3 h-3 text-paper fill-paper" />
           </div>
         )}
@@ -140,7 +146,7 @@ function MosaicBox({ topic, span, tint }: { topic: TopicData; span: string; tint
 export function MoodMosaic({ topics }: { topics: TopicData[] }) {
   return (
     <section className="px-4 md:px-12 pb-16">
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 auto-rows-[120px] md:auto-rows-[140px] gap-3 md:gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 auto-rows-[110px] md:auto-rows-[130px] gap-3 md:gap-4 [grid-auto-flow:dense]">
         {topics.map((t, i) => (
           <MosaicBox
             key={t.slug}

@@ -3,8 +3,6 @@ import {
   Mail, ArrowUpRight, Linkedin, Github, Send, MapPin,
 } from "lucide-react";
 import { PageShell } from "@/components/SiteChrome";
-import { MoodMosaic } from "@/components/MoodMosaic";
-import { findCluster } from "@/data/clusters";
 import { useReveal } from "@/hooks/useReveal";
 import { toast } from "@/hooks/use-toast";
 
@@ -14,7 +12,6 @@ const CONTACT_EMAIL = "geetika@example.com";
 
 const Contact = () => {
   useReveal();
-  const cluster = findCluster("contact")!;
 
   return (
     <PageShell>
@@ -28,12 +25,10 @@ const Contact = () => {
           Open correspondence and links to everywhere else.
         </h1>
         <p className="mt-8 max-w-2xl text-lg md:text-xl text-ink-soft leading-relaxed font-display italic animate-fade-up">
-          Click any box for details, or use the form below to reach out directly.
+          Reach out directly via email or connect through any of the channels below.
         </p>
         <div className="rule-gold mt-10" />
       </section>
-
-      <MoodMosaic topics={cluster.topics} />
 
       <section className="container pb-16">
         <ContactBlock />

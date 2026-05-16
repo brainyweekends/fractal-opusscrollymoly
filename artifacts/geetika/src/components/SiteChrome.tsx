@@ -8,9 +8,7 @@ const topLinks = [
   { to: "/", label: "Home (Editorial)", num: "00" },
   { to: "/dashboard", label: "Dashboard", num: "✦✦" },
 ];
-const footerLinks = [
-  { to: `/${PROOF_CLUSTER.slug}`, label: PROOF_CLUSTER.label, num: PROOF_CLUSTER.num },
-];
+const footerLinks: { to: string; label: string; num: string }[] = [];
 
 export const SiteNav = () => {
   const [open, setOpen] = useState(false);
@@ -195,7 +193,6 @@ export const SiteFooter = forwardRef<HTMLElement>((_, ref) => (
         <ul className="space-y-2 font-mono text-xs">
           <li><Link to="/contact" className="link-underline hover:text-gold">Email</Link></li>
           <li><Link to="/vault" className="link-underline hover:text-gold">Curriculum Vitae</Link></li>
-          <li><Link to="/proof" className="link-underline hover:text-gold">Proof of Curiosity</Link></li>
         </ul>
       </div>
     </div>

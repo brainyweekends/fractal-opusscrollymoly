@@ -127,7 +127,7 @@ const Index = () => {
       {/* MANIFESTO — layered: paper bg + drifting notebook + telescope corner + crumpled-paper veil */}
       <section
         id="after-hero"
-        className="relative py-16 md:py-24 scroll-mt-16 overflow-hidden crumpled-paper crinkle film-grain leak parchment fibers"
+        className="relative py-12 md:py-16 scroll-mt-16 overflow-hidden crumpled-paper crinkle film-grain leak parchment fibers"
       >
         <img
           src={texturePaper}
@@ -187,7 +187,7 @@ const Index = () => {
       </div>
 
       {/* SKILLS TOOLKIT — layered telescope + cosmos veil + scanlines */}
-      <section className="relative py-14 md:py-20 overflow-hidden scanlines film-grain dust weave-soft stipple">
+      <section className="relative py-10 md:py-14 overflow-hidden scanlines film-grain dust weave-soft stipple">
         <img
           src={atmosTelescope}
           alt=""
@@ -212,13 +212,13 @@ const Index = () => {
               A working list, not a brag sheet. Each tool earns its place by what I've shipped, not what I've studied.
             </p>
           </div>
-          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-border border border-border">
+          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
             {SKILLS.map(({ icon: I, label, level }, idx) => (
               <li
                 key={label}
                 data-reveal
                 data-reveal-delay={String(idx * 40)}
-                className="fancy-tile bg-paper p-5 group hover:bg-navy-deep hover:text-paper-contrast transition-all duration-500 relative overflow-hidden fibers stipple hover:-translate-y-1"
+                className="fancy-tile bg-paper border border-border p-5 group hover:bg-navy-deep hover:text-paper-contrast transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] relative overflow-hidden fibers stipple hover:-translate-y-1 hover:border-gold"
               >
                 <I className="w-5 h-5 text-gold mb-4 transition-transform duration-500 group-hover:rotate-[8deg] group-hover:scale-110" />
                 <p className="font-display text-xl leading-tight">{label}</p>
@@ -235,7 +235,7 @@ const Index = () => {
       </section>
 
       {/* FEATURED HIGHLIGHTS BENTO — cosmos bg + crumpled-paper field + drifting notebook */}
-      <section className="relative py-14 md:py-20 overflow-hidden crumpled-paper film-grain leak marble fibers">
+      <section className="relative py-10 md:py-14 overflow-hidden crumpled-paper film-grain leak marble fibers">
         <img
           src={textureCosmos}
           alt=""
@@ -301,7 +301,7 @@ const Index = () => {
       </section>
 
       {/* RANDOM WINS / CURIOSITIES TEASER — paper texture wash + crinkle */}
-      <section className="relative py-12 md:py-16 overflow-hidden crinkle film-grain dust linen parchment weave-soft">
+      <section className="relative py-10 md:py-14 overflow-hidden crinkle film-grain dust linen parchment weave-soft">
         <img
           src={texturePaper}
           alt=""
@@ -331,7 +331,7 @@ const Index = () => {
       </section>
 
       {/* GRAND GROUPS — index, layered music plate */}
-      <section className="relative py-16 md:py-24 overflow-hidden film-grain dust crumpled-paper marble fibers">
+      <section className="relative py-10 md:py-16 overflow-hidden film-grain dust crumpled-paper marble fibers">
         <img
           src={atmosMusic}
           alt=""
@@ -359,14 +359,14 @@ const Index = () => {
             </div>
           </div>
 
-          <ol className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border" data-reveal>
+          <ol className="grid grid-cols-2 lg:grid-cols-5 gap-3 [&>li:nth-child(5)]:col-span-2 lg:[&>li:nth-child(5)]:col-span-1" data-reveal>
             {CLUSTERS.map((c) => {
               const CI = c.icon;
               return (
-                <li key={c.slug} className="bg-paper">
+                <li key={c.slug}>
                   <Link
                     to={`/${c.slug}`}
-                    className="fancy-tile group/tile block p-6 h-full hover:bg-navy-deep hover:text-paper-contrast transition-all duration-500 relative overflow-hidden fibers stipple hover:-translate-y-1"
+                    className="fancy-tile group/tile block p-6 h-full bg-paper border border-border hover:bg-navy-deep hover:text-paper-contrast transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] relative overflow-hidden fibers stipple hover:-translate-y-1 hover:border-gold"
                   >
                     <div className="flex items-start justify-between mb-6">
                       <CI className="w-5 h-5 text-gold" />
@@ -387,7 +387,7 @@ const Index = () => {
       </section>
 
       {/* CORE TRAITS BAND — layered cosmos + telescope + crumpled-paper veil */}
-      <section className="force-light bg-navy-deep text-paper py-20 md:py-28 relative overflow-hidden grain crumpled-paper film-grain leak marble stipple">
+      <section className="force-light bg-navy-deep text-paper py-14 md:py-20 relative overflow-hidden grain crumpled-paper film-grain leak marble stipple">
         <img
           src={textureCosmos}
           alt=""
