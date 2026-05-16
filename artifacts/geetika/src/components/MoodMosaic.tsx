@@ -21,6 +21,10 @@ const CELL_LAYOUTS = {
     "col-span-1 row-span-1",
     "col-span-1 row-span-1",
     "col-span-2 row-span-2",
+    "col-span-2 row-span-1",
+    "col-span-1 row-span-1",
+    "col-span-1 row-span-2",
+    "col-span-2 row-span-1",
   ],
   lg: [
     "col-span-2 row-span-2",
@@ -34,6 +38,12 @@ const CELL_LAYOUTS = {
     "col-span-2 row-span-1",
     "col-span-1 row-span-2",
     "col-span-1 row-span-1",
+    "col-span-2 row-span-1",
+    "col-span-2 row-span-2",
+    "col-span-1 row-span-1",
+    "col-span-1 row-span-1",
+    "col-span-2 row-span-1",
+    "col-span-1 row-span-2",
     "col-span-2 row-span-1",
   ],
 } as const;
@@ -132,7 +142,7 @@ function MosaicTile({ topic, span, tint, index }: { topic: TopicData; span: stri
 export function MoodMosaic({ topics }: { topics: TopicData[] }) {
   return (
     <section className="px-4 md:px-12 pb-16 overflow-hidden">
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 auto-rows-[132px] md:auto-rows-[154px] lg:auto-rows-[176px] gap-3 md:gap-4 lg:gap-5 [grid-auto-flow:dense]">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 auto-rows-[118px] md:auto-rows-[138px] lg:auto-rows-[156px] gap-2.5 md:gap-3.5 lg:gap-4 [grid-auto-flow:dense]">
         {topics.map((topic, index) => (
           <MosaicTile
             key={topic.slug}
