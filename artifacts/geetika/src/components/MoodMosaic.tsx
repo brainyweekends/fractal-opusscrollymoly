@@ -177,7 +177,6 @@ function SplitTile({ left, right, tintLeft, tintRight, index }: { left: TopicDat
 
 export function MoodMosaic({ topics }: { topics: TopicData[] }) {
   const splitIndex = topics.findIndex((topic) => topic.slug === "childhood-trophies");
-  const rowWideIndex = topics.findIndex((topic) => topic.slug === "early-medals");
   return (
     <section className="px-4 md:px-12 pb-4 overflow-hidden">
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 auto-rows-[118px] md:auto-rows-[138px] lg:auto-rows-[156px] gap-2.5 md:gap-3.5 lg:gap-4 [grid-auto-flow:dense]">
@@ -196,17 +195,6 @@ export function MoodMosaic({ topics }: { topics: TopicData[] }) {
           }
           if (splitIndex >= 0 && index === splitIndex + 1) {
             return null;
-          }
-          if (topic.slug === "early-medals" && rowWideIndex >= 0) {
-            return (
-              <MosaicTile
-                key={topic.slug}
-                topic={topic}
-                index={index}
-                span="col-span-2 row-span-1"
-                tint={CELL_TINTS[index % CELL_TINTS.length]}
-              />
-            );
           }
           return (
             <MosaicTile
