@@ -128,101 +128,114 @@ function CVFeatureBlock() {
   );
 }
 
-function CVDocumentGrid() {
-  const [activeTab, setActiveTab] = useState<"cv" | "resume">("cv");
-
+function PDFEmbedBox({
+  title,
+  subtitle,
+  badge,
+  pdfUrl,
+  icon: Icon,
+  footerMeta,
+}: {
+  title: string;
+  subtitle: string;
+  badge: string;
+  pdfUrl: string;
+  icon: IconCmp;
+  footerMeta: string;
+}) {
   return (
-    <div className="space-y-6">
-      {/* PDF Embed Box */}
-      <div className="fancy-tile border border-border bg-paper overflow-hidden">
-        {/* Header bar with tabs & actions */}
-        <div className="border-b border-border p-4 md:p-5 flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setActiveTab("cv")}
-              className={`px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-widest border transition-colors ${
-                activeTab === "cv"
-                  ? "border-gold text-gold bg-gold/10"
-                  : "border-border text-ink-soft hover:border-gold/50 hover:text-gold"
-              }`}
-            >
-              <span className="inline-flex items-center gap-1.5">
-                <FileText className="w-3 h-3" />
-                CV
-              </span>
-            </button>
-            <button
-              onClick={() => setActiveTab("resume")}
-              className={`px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-widest border transition-colors ${
-                activeTab === "resume"
-                  ? "border-gold text-gold bg-gold/10"
-                  : "border-border text-ink-soft hover:border-gold/50 hover:text-gold"
-              }`}
-            >
-              <span className="inline-flex items-center gap-1.5">
-                <BookOpen className="w-3 h-3" />
-                Résumé
-              </span>
-            </button>
-          </div>
-
-          <span className="flex-1" />
-
-          <a
-            href={CV_PDF_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest text-ink-soft hover:text-gold transition-colors"
-          >
-            <Download className="w-3 h-3" />
-            Download {activeTab === "cv" ? "CV" : "Résumé"}
-          </a>
-          <span className="text-ink-soft/40">·</span>
-          <a
-            href={CV_PDF_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest text-ink-soft hover:text-gold transition-colors"
-          >
-            <ExternalLink className="w-3 h-3" />
-            Open in new tab
-          </a>
-          <span className="font-mono text-[0.55rem] uppercase tracking-widest border border-border px-2 py-0.5 text-ink-soft">
-            PDF
+    <div className="fancy-tile border border-border bg-paper overflow-hidden">
+      {/* Header bar */}
+      <div className="border-b border-border p-4 md:p-5 flex flex-wrap items-center gap-3">
+        <div className="flex items-center gap-2">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-widest border border-gold text-gold bg-gold/10">
+            <Icon className="w-3 h-3" />
+            {title}
           </span>
         </div>
 
-        {/* PDF embed */}
-        <div className="relative w-full" style={{ height: "70vh", minHeight: "480px" }}>
-          <iframe
-            src={CV_PDF_URL}
-            title={activeTab === "cv" ? "Curriculum Vitae PDF" : "Résumé PDF"}
-            className="absolute inset-0 w-full h-full"
-            style={{ border: "none" }}
-          />
-        </div>
+        <span className="flex-1" />
 
-        {/* Footer info */}
-        <div className="border-t border-border p-4 md:p-5 flex flex-wrap items-center gap-3 text-ink-soft">
-          <span className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest">
-            <span>📄</span> Full curriculum vitae
-          </span>
-          <span className="text-ink-soft/30">|</span>
-          <span className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest">
-            <span>📐</span> A4 format
-          </span>
-          <span className="text-ink-soft/30">|</span>
-          <span className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest">
-            <span>🔍</span> Scroll to browse
-          </span>
-          <span className="flex-1" />
-          <span className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest">
-            <span>✨</span> Updated 2025
-          </span>
-        </div>
+        <a
+          href={pdfUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest text-ink-soft hover:text-gold transition-colors"
+        >
+          <Download className="w-3 h-3" />
+          Download {title}
+        </a>
+        <span className="text-ink-soft/40">·</span>
+        <a
+          href={pdfUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest text-ink-soft hover:text-gold transition-colors"
+        >
+          <ExternalLink className="w-3 h-3" />
+          Open in new tab
+        </a>
+        <span className="font-mono text-[0.55rem] uppercase tracking-widest border border-border px-2 py-0.5 text-ink-soft">
+          {badge}
+        </span>
       </div>
 
-      {/* External link tile */}
+      {/* PDF embed */}
+      <div className="relative w-full" style={{ height: "60vh", minHeight: "420px" }}>
+        <iframe
+          src={pdfUrl}
+          title={`${title} PDF`}
+          className="absolute inset-0 w-full h-full"
+          style={{ border: "none" }}
+        />
+      </div>
+
+      {/* Footer info */}
+      <div className="border-t border-border p-4 md:p-5 flex flex-wrap items-center gap-3 text-ink-soft">
+        <span className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest">
+          <span>📄</span> {subtitle}
+        </span>
+        <span className="text-ink-soft/30">|</span>
+        <span className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest">
+          <span>📐</span> {badge}
+        </span>
+        <span className="text-ink-soft/30">|</span>
+        <span className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest">
+          <span>🔍</span> Scroll to browse
+        </span>
+        <span className="flex-1" />
+        <span className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest">
+          <span>✨</span> {footerMeta}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function CVDocumentGrid() {
+  return (
+    <div className="space-y-6">
+      {/* CV Box */}
+      <PDFEmbedBox
+        title="CV"
+        subtitle="Full curriculum vitae"
+        badge="PDF · A4"
+        pdfUrl={CV_PDF_URL}
+        icon={FileText}
+        footerMeta="Updated 2025"
+      />
+
+      {/* Résumé Box */}
+      <PDFEmbedBox
+        title="Résumé"
+        subtitle="One-page condensed version"
+        badge="PDF · Letter"
+        pdfUrl={CV_PDF_URL}
+        icon={BookOpen}
+        footerMeta="Updated 2025"
+      />
+
+      {/* LinkedIn tile */}
       <a
         href="https://www.linkedin.com/in/geetika-gehlot"
         target="_blank"
