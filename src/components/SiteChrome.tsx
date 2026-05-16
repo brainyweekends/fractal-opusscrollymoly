@@ -132,27 +132,6 @@ export const SiteNav = () => {
               })}
             </ul>
 
-            {/* Footer fixed links (Proof) */}
-            <ol className="mt-2">
-              {footerLinks.map((s) => (
-                <li key={s.to}>
-                  <NavLink
-                    to={s.to}
-                    onClick={() => setOpen(false)}
-                    className={({ isActive }) =>
-                      `flex items-baseline gap-6 py-4 border-b border-border/60 transition-colors ${
-                        isActive ? "text-gold" : "text-ink hover:text-gold"
-                      }`
-                    }
-                  >
-                    <span className="font-mono text-[0.7rem] tracking-widest text-muted-foreground w-8">
-                      {s.num}
-                    </span>
-                    <span className="font-display text-2xl">{s.label}</span>
-                  </NavLink>
-                </li>
-              ))}
-            </ol>
 
             <p className="mt-8 eyebrow text-muted-foreground">
               Curiosity is not my hobby. It is my operating system.
