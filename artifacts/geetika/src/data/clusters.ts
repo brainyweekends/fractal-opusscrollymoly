@@ -61,9 +61,6 @@ export const CLUSTERS: Cluster[] = [
       topic("Math Competitions", "Proofs, speed rounds, and problem sets.", "Contest math, olympiad prep, and the grind behind fast, accurate reasoning. Every result here is the product of repetition, pattern recognition, and calm under pressure."),
       topic("Science Fair Log", "Experiments with receipts.", "Project boards, hypothesis tests, iterations, and presentation days. The science fair log captures the full cycle from idea to evidence."),
       topic("AP Prep", "Coursework, review, and exam season.", "AP study plans, review notes, and the strategy behind balancing depth with volume. This is where academic stamina gets documented."),
-      topic("Lab Notes", "Observations in the margins.", "Hands-on lab work, data tables, and the notes that keep experiments honest. The lab notebook is where messy reality becomes legible."),
-      topic("Study Systems", "Routines that actually work.", "Schedules, flashcards, spaced repetition, and the systems that keep multiple subjects moving at once. Study method is part of the outcome."),
-      topic("Transcript Snapshot", "The paper trail.", "Grade snapshots, term summaries, and the records that anchor the narrative. It’s the simplest way to see progress over time."),
     ],
   },
   {

@@ -29,7 +29,7 @@ const Academics = () => {
         <div className="rule-gold mt-8" />
       </section>
 
-      <div className="overflow-hidden">
+      <div className="overflow-hidden pb-0">
         <MoodMosaic topics={cluster.topics} />
       </div>
     </PageShell>

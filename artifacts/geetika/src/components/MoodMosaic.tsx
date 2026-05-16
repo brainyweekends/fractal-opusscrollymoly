@@ -141,7 +141,7 @@ function MosaicTile({ topic, span, tint, index }: { topic: TopicData; span: stri
 
 export function MoodMosaic({ topics }: { topics: TopicData[] }) {
   return (
-    <section className="px-4 md:px-12 pb-16 overflow-hidden">
+    <section className="px-4 md:px-12 pb-4 overflow-hidden">
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 auto-rows-[118px] md:auto-rows-[138px] lg:auto-rows-[156px] gap-2.5 md:gap-3.5 lg:gap-4 [grid-auto-flow:dense]">
         {topics.map((topic, index) => (
           <MosaicTile
