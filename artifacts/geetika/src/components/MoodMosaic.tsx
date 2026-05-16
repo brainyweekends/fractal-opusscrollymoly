@@ -33,6 +33,41 @@ const TINTS = [
   "from-paper-deep via-gold/5 to-paper",
 ];
 
+const LAYOUTS = {
+  mobile: [
+    "col-span-2 row-span-2",
+    "col-span-1 row-span-1",
+    "col-span-1 row-span-1",
+    "col-span-2 row-span-1",
+    "col-span-1 row-span-2",
+    "col-span-1 row-span-1",
+  ],
+  md: [
+    "col-span-2 row-span-2",
+    "col-span-2 row-span-1",
+    "col-span-1 row-span-1",
+    "col-span-1 row-span-2",
+    "col-span-2 row-span-1",
+    "col-span-1 row-span-1",
+    "col-span-1 row-span-1",
+    "col-span-2 row-span-2",
+  ],
+  lg: [
+    "col-span-2 row-span-2",
+    "col-span-1 row-span-1",
+    "col-span-1 row-span-2",
+    "col-span-2 row-span-1",
+    "col-span-1 row-span-1",
+    "col-span-2 row-span-2",
+    "col-span-1 row-span-1",
+    "col-span-1 row-span-1",
+    "col-span-2 row-span-1",
+    "col-span-1 row-span-2",
+    "col-span-1 row-span-1",
+    "col-span-2 row-span-1",
+  ],
+} as const;
+
 function YouTubeEmbed({ src, caption }: { src: string; caption?: string }) {
   return (
     <div className="mt-6">
@@ -144,20 +179,18 @@ function MosaicBox({ topic, span, tint }: { topic: TopicData; span: string; tint
 }
 
 export function MoodMosaic({ topics }: { topics: TopicData[] }) {
+  const spans = LAYOUTS.lg;
   return (
     <section className="px-4 md:px-12 pb-16">
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 auto-rows-[110px] md:auto-rows-[130px] gap-3 md:gap-4 [grid-auto-flow:dense]">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 auto-rows-[110px] md:auto-rows-[130px] gap-3 md:gap-4 [grid-auto-flow:dense] content-start">
         {topics.map((t, i) => (
           <MosaicBox
             key={t.slug}
             topic={t}
-            span={SPANS[i % SPANS.length]}
+            span={spans[i % spans.length]}
             tint={TINTS[i % TINTS.length]}
           />
         ))}
-        {topics.length % 2 === 1 && (
-          <div className="hidden lg:block col-span-2 row-span-1" aria-hidden="true" />
-        )}
       </div>
     </section>
   );
