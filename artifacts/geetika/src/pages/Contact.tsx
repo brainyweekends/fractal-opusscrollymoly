@@ -18,7 +18,7 @@ const Contact = () => {
       <section className="container pt-16 md:pt-24 pb-12">
         <div className="flex items-baseline gap-6 mb-8 animate-fade-in">
           <span className="font-mono text-xs tracking-[0.3em] text-gold">§ 05</span>
-          <span className="eyebrow">Contact & Links</span>
+          <span className="eyebrow">Contact</span>
           <span className="flex-1 h-px bg-border" />
         </div>
         <h1 className="display-xl text-xl md:text-2xl lg:text-3xl text-balance max-w-5xl animate-fade-up">
@@ -57,16 +57,51 @@ function ContactBlock() {
     toast({ title: "Opening your mail client…" });
   };
 
-  const channels: Array<{ icon: IconCmp; label: string; value: string; href?: string }> = [
-    { icon: Mail, label: "Email", value: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
-    { icon: Linkedin, label: "LinkedIn", value: "/in/geetika-gehlot", href: "https://www.linkedin.com/" },
-    { icon: Github, label: "GitHub", value: "@geetika", href: "https://github.com/" },
-    { icon: MapPin, label: "Based in", value: "Montréal, QC" },
+  const channels: Array<{ icon: IconCmp; label: string; value: string; href?: string; num: string }> = [
+    { icon: Mail,     label: "Email",    value: CONTACT_EMAIL,         href: `mailto:${CONTACT_EMAIL}`, num: "01" },
+    { icon: Linkedin, label: "LinkedIn", value: "/in/geetika-gehlot",  href: "https://www.linkedin.com/", num: "02" },
+    { icon: Github,   label: "GitHub",   value: "@geetika",            href: "https://github.com/", num: "03" },
+    { icon: MapPin,   label: "Based in", value: "Montréal, QC",                                          num: "04" },
   ];
 
   return (
-    <div className="grid md:grid-cols-[1.2fr,1fr] gap-8 items-start">
-      <form onSubmit={onSubmit} className="bg-paper-deep border border-border p-6 md:p-8 space-y-4 rounded-2xl">
+    <div className="space-y-10">
+      {/* Archive-style channel tiles */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {channels.map(({ icon: I, label, value, href, num }) => {
+          const inner = (
+            <div
+              className="fancy-tile group/tile relative block p-5 h-full bg-paper border border-border hover:bg-navy-deep hover:text-paper-contrast transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-gold fibers stipple overflow-hidden"
+              style={{ minHeight: "140px" }}
+            >
+              <div className="relative z-10 h-full flex flex-col justify-between">
+                <div className="flex items-start justify-between mb-4">
+                  <I className="w-4 h-4 text-gold" />
+                  <span className="font-mono text-[0.6rem] tracking-[0.28em] text-gold">{num}</span>
+                </div>
+                <div>
+                  <p className="font-display text-base leading-snug group-hover/tile:text-paper-contrast transition-colors duration-300 mb-1">{label}</p>
+                  <p className="font-mono text-[0.58rem] uppercase tracking-[0.16em] text-ink-soft group-hover/tile:text-paper-contrast-soft transition-colors duration-300 truncate">{value}</p>
+                </div>
+              </div>
+              {href && (
+                <ArrowUpRight className="absolute right-4 bottom-4 w-4 h-4 text-ink-soft group-hover/tile:text-gold group-hover/tile:translate-x-0.5 group-hover/tile:-translate-y-0.5 transition-all duration-500" />
+              )}
+              <span className="absolute left-0 bottom-0 h-px w-0 bg-gold transition-all duration-700 group-hover/tile:w-full" />
+            </div>
+          );
+
+          return href ? (
+            <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="block">{inner}</a>
+          ) : (
+            <div key={label}>{inner}</div>
+          );
+        })}
+      </div>
+
+      {/* Contact form */}
+      <form onSubmit={onSubmit} className="bg-paper-deep border border-border p-6 md:p-8 space-y-4 max-w-2xl">
+        <p className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-gold mb-6">Send a message</p>
         <div className="grid sm:grid-cols-2 gap-4">
           <label className="block">
             <span className="eyebrow">Your name</span>
@@ -92,28 +127,6 @@ function ContactBlock() {
           {sending ? "Sending…" : "Send via email"}
         </button>
       </form>
-
-      <ul className="space-y-3">
-        {channels.map(({ icon: I, label, value, href }) => {
-          const inner = (
-            <div className="group dossier-card p-5 hover-lift flex items-start gap-3">
-              <I className="w-4 h-4 text-gold mt-1 shrink-0" />
-              <div className="min-w-0 flex-1">
-                <p className="font-mono text-[0.6rem] uppercase tracking-[0.3em] text-gold">{label}</p>
-                <p className="font-display text-lg text-ink truncate">{value}</p>
-              </div>
-              {href && <ArrowUpRight className="w-4 h-4 text-ink-soft group-hover:text-gold transition-colors" />}
-            </div>
-          );
-          return (
-            <li key={label}>
-              {href ? (
-                <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">{inner}</a>
-              ) : inner}
-            </li>
-          );
-        })}
-      </ul>
     </div>
   );
 }

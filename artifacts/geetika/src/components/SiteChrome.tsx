@@ -2,6 +2,7 @@ import { NavLink, Link } from "react-router-dom";
 import { forwardRef, useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { CLUSTERS } from "@/data/clusters";
+import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 
 const topLinks = [
   { to: "/", label: "Home", num: "00" },
@@ -155,6 +156,7 @@ SiteFooter.displayName = "SiteFooter";
 export const PageShell = ({ children }: { children: React.ReactNode }) => (
   <div className="min-h-screen bg-paper text-foreground">
     <SiteNav />
+    <ScrollProgressBar />
     <main className="pt-16">{children}</main>
     <SiteFooter />
   </div>

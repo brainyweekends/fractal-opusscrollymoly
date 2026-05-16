@@ -1,6 +1,6 @@
 import { GraduationCap } from "lucide-react";
 import { PageShell } from "@/components/SiteChrome";
-import { MoodMosaic } from "@/components/MoodMosaic";
+import { ArchiveMosaic } from "@/components/ArchiveMosaic";
 import { findCluster } from "@/data/clusters";
 import { useReveal } from "@/hooks/useReveal";
 
@@ -13,7 +13,7 @@ const Academics = () => {
       <section className="container pt-12 md:pt-16 pb-8 overflow-hidden">
         <div className="flex items-baseline gap-6 mb-8 animate-fade-in">
           <span className="font-mono text-xs tracking-[0.3em] text-gold">§ 02</span>
-          <span className="eyebrow text-[0.62rem] md:text-[0.62rem]">Academics, STEM & Research</span>
+          <span className="eyebrow text-[0.62rem] md:text-[0.62rem]">Academics</span>
           <span className="flex-1 h-px bg-border" />
         </div>
         <div className="flex items-start gap-5 mb-6 animate-fade-in">
@@ -29,9 +29,7 @@ const Academics = () => {
         <div className="rule-gold mt-8" />
       </section>
 
-      <div className="overflow-hidden pb-0">
-        <MoodMosaic topics={cluster.topics} />
-      </div>
+      <ArchiveMosaic topics={cluster.topics} />
     </PageShell>
   );
 };

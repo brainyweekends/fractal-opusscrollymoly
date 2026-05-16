@@ -1,6 +1,6 @@
 import { Wand as Wand2 } from "lucide-react";
 import { PageShell } from "@/components/SiteChrome";
-import { MoodMosaic } from "@/components/MoodMosaic";
+import { ArchiveMosaic } from "@/components/ArchiveMosaic";
 import { findCluster } from "@/data/clusters";
 import { useReveal } from "@/hooks/useReveal";
 
@@ -29,9 +29,7 @@ const Works = () => {
         <div className="rule-gold mt-10" />
       </section>
 
-      <div className="overflow-hidden">
-        <MoodMosaic topics={cluster.topics} />
-      </div>
+      <ArchiveMosaic topics={cluster.topics} />
     </PageShell>
   );
 };
