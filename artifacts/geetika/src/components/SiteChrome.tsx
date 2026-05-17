@@ -1,4 +1,4 @@
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate, useLocation } from "react-router-dom";
 import { forwardRef, useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { CLUSTERS } from "@/data/clusters";
@@ -9,9 +9,16 @@ const topLinks = [
   { to: "/dashboard", label: "Pages", num: "✦✦" },
 ];
 
+function forceNav(to: string) {
+  window.dispatchEvent(
+    new CustomEvent("gg-force-nav", { detail: { to, reload: to === window.location.pathname } })
+  );
+}
+
 export const SiteNav = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -20,7 +27,7 @@ export const SiteNav = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => { setOpen(false); }, []);
+  useEffect(() => { setOpen(false); }, [pathname]);
 
   return (
     <>
@@ -32,14 +39,18 @@ export const SiteNav = () => {
         }`}
       >
         <div className="container flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-3 group">
+          <button
+            onClick={() => forceNav("/")}
+            className="flex items-center gap-3 group bg-transparent border-0 p-0 cursor-pointer"
+            aria-label="Go to homepage"
+          >
             <span className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-gold [text-shadow:0_2px_8px_hsl(220_60%_4%/0.65),0_1px_2px_hsl(220_60%_4%/0.8)]">
               GG
             </span>
             <span className="hidden sm:inline font-display [text-shadow:0_2px_8px_hsl(220_60%_4%/0.65),0_1px_2px_hsl(220_60%_4%/0.8)] text-xl text-[#faee6e] bg-[#91262600]">
               Geetika Gehlot
             </span>
-          </Link>
+          </button>
 
           <div className="flex items-center gap-3 text-paper">
             <button
@@ -72,18 +83,15 @@ export const SiteNav = () => {
             <ol className="space-y-0">
               {topLinks.map((s) => (
                 <li key={s.to}>
-                  <NavLink
-                    to={s.to}
-                    onClick={() => setOpen(false)}
-                    className={({ isActive }) =>
-                      `flex items-baseline gap-6 py-4 border-b border-border/60 group transition-colors ${
-                        isActive ? "text-gold" : "text-ink hover:text-gold"
-                      }`
-                    }
+                  <button
+                    onClick={() => { setOpen(false); forceNav(s.to); }}
+                    className={`w-full text-left flex items-baseline gap-6 py-4 border-b border-border/60 group transition-colors bg-transparent border-0 ${
+                      pathname === s.to ? "text-gold" : "text-ink hover:text-gold"
+                    }`}
                   >
                     <span className="font-mono text-[0.7rem] tracking-widest text-muted-foreground w-8">{s.num}</span>
                     <span className="font-display text-xl">{s.label}</span>
-                  </NavLink>
+                  </button>
                 </li>
               ))}
             </ol>
@@ -94,19 +102,16 @@ export const SiteNav = () => {
                 const CI = c.icon;
                 return (
                   <li key={c.slug} className="border-b border-border/60">
-                    <NavLink
-                      to={`/${c.slug}`}
-                      onClick={() => setOpen(false)}
-                      className={({ isActive }) =>
-                        `flex items-baseline gap-4 py-3 transition-colors ${
-                          isActive ? "text-gold" : "text-ink hover:text-gold"
-                        }`
-                      }
+                    <button
+                      onClick={() => { setOpen(false); forceNav(`/${c.slug}`); }}
+                      className={`w-full text-left flex items-baseline gap-4 py-3 transition-colors bg-transparent border-0 ${
+                        pathname === `/${c.slug}` ? "text-gold" : "text-ink hover:text-gold"
+                      }`}
                     >
                       <CI className="w-3.5 h-3.5 text-gold shrink-0 self-center" />
                       <span className="font-mono text-[0.65rem] tracking-widest text-muted-foreground w-8">{c.num}</span>
                       <span className="font-display text-base">{c.label}</span>
-                    </NavLink>
+                    </button>
                   </li>
                 );
               })}
@@ -130,13 +135,21 @@ export const SiteFooter = forwardRef<HTMLElement>((_, ref) => (
       <div>
         <p className="eyebrow text-paper/60 mb-4">Navigate</p>
         <ul className="space-y-2 font-mono text-xs">
-          <li><Link to="/" className="link-underline hover:text-gold">00 · Home</Link></li>
-          <li><Link to="/dashboard" className="link-underline hover:text-gold">✦✦ · Pages</Link></li>
+          <li>
+            <button onClick={() => forceNav("/")} className="link-underline hover:text-gold bg-transparent border-0 p-0 cursor-pointer text-left">
+              00 · Home
+            </button>
+          </li>
+          <li>
+            <button onClick={() => forceNav("/dashboard")} className="link-underline hover:text-gold bg-transparent border-0 p-0 cursor-pointer text-left">
+              ✦✦ · Pages
+            </button>
+          </li>
           {CLUSTERS.map((c) => (
             <li key={c.slug}>
-              <Link to={`/${c.slug}`} className="link-underline hover:text-gold">
+              <button onClick={() => forceNav(`/${c.slug}`)} className="link-underline hover:text-gold bg-transparent border-0 p-0 cursor-pointer text-left">
                 {c.num} · {c.label}
-              </Link>
+              </button>
             </li>
           ))}
         </ul>
