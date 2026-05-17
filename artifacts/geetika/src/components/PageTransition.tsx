@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-const FADE_IN = 120;
-const HOLD = 180;
-const FADE_OUT = 140;
+const GG_FADE_IN = 180;
+const HOLD = 700;
+const FADE_OUT = 480;
 
-type Phase = "idle" | "enter" | "hold" | "exit";
+type Phase = "idle" | "covering" | "enter" | "hold" | "exit";
 
 export function PageTransition() {
   const { pathname } = useLocation();
@@ -17,37 +17,46 @@ export function PageTransition() {
     if (pathname === lastPath.current) return;
     timers.current.forEach(window.clearTimeout);
     timers.current = [];
-    setPhase("enter");
+
+    setPhase("covering");
+
     timers.current.push(
-      window.setTimeout(() => setPhase("hold"), FADE_IN),
+      window.setTimeout(() => setPhase("enter"), 16),
+      window.setTimeout(() => setPhase("hold"), 16 + GG_FADE_IN),
       window.setTimeout(() => {
         lastPath.current = pathname;
         setPhase("exit");
-      }, FADE_IN + HOLD),
-      window.setTimeout(() => setPhase("idle"), FADE_IN + HOLD + FADE_OUT),
+      }, 16 + GG_FADE_IN + HOLD),
+      window.setTimeout(() => setPhase("idle"), 16 + GG_FADE_IN + HOLD + FADE_OUT),
     );
     return () => timers.current.forEach(window.clearTimeout);
   }, [pathname]);
 
   const visible = phase !== "idle";
-  const showText = phase === "hold";
-  const overlayTransition = phase === "enter"
-    ? `opacity ${FADE_IN}ms cubic-bezier(0.22,1,0.36,1)`
-    : phase === "exit"
+  const showText = phase === "hold" || phase === "enter";
+  const textReady = phase === "hold";
+
+  const overlayOpacity = visible ? 1 : 0;
+  const overlayTransition =
+    phase === "exit"
       ? `opacity ${FADE_OUT}ms cubic-bezier(0.22,1,0.36,1)`
-      : `opacity ${HOLD}ms linear`;
-  const textTransition = phase === "enter"
-    ? `opacity ${FADE_IN}ms ease, transform ${FADE_IN}ms cubic-bezier(0.22,1,0.36,1)`
-    : phase === "exit"
-      ? `opacity ${FADE_OUT}ms ease, transform ${FADE_OUT}ms cubic-bezier(0.22,1,0.36,1)`
-      : `opacity ${HOLD}ms linear`;
+      : phase === "covering"
+      ? "none"
+      : "none";
+
+  const textTransition =
+    phase === "enter"
+      ? `opacity ${GG_FADE_IN}ms ease, transform ${GG_FADE_IN}ms cubic-bezier(0.22,1,0.36,1)`
+      : phase === "exit"
+      ? `opacity ${FADE_OUT * 0.7}ms ease, transform ${FADE_OUT * 0.7}ms cubic-bezier(0.22,1,0.36,1)`
+      : "none";
 
   return (
     <div
       aria-hidden
       className="pointer-events-none fixed inset-0 z-[9999] bg-black"
       style={{
-        opacity: visible ? 1 : 0,
+        opacity: overlayOpacity,
         visibility: visible ? "visible" : "hidden",
         transition: overlayTransition,
       }}
@@ -61,8 +70,8 @@ export function PageTransition() {
             textIndent: "0.38em",
             color: "hsl(43 78% 62%)",
             textShadow: "0 0 24px hsl(43 78% 62% / 0.45)",
-            opacity: showText ? 1 : 0,
-            transform: showText ? "scale(1)" : "scale(0.96)",
+            opacity: showText && textReady ? 1 : 0,
+            transform: showText && textReady ? "scale(1)" : "scale(0.94)",
             transition: textTransition,
           }}
         >

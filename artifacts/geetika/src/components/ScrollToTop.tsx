@@ -13,10 +13,10 @@ export function ScrollToTop() {
           el.scrollIntoView({ behavior: "smooth", block: "start" });
           return;
         }
-        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
       }, 80);
     } else {
-      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
     }
   }, [pathname, hash]);
 
