@@ -332,28 +332,16 @@ export function PageTransition() {
                 </span>
                 <span
                   style={{
-                    fontFamily: "ui-monospace, 'JetBrains Mono', monospace",
-                    fontSize: "clamp(0.7rem, 1.2vw, 0.9rem)",
-                    letterSpacing: "0.35em",
-                    textTransform: "uppercase",
-                    color: "hsl(43 65% 52% / 0.6)",
-                    marginTop: "0.6rem",
-                  }}
-                >
-                  Home
-                </span>
-                <span
-                  style={{
                     fontFamily: "'Playfair Display', Georgia, serif",
                     fontSize: "clamp(0.85rem, 1.5vw, 1.1rem)",
                     fontWeight: 500,
                     fontStyle: "italic",
                     color: "hsl(43 60% 55% / 0.65)",
                     letterSpacing: "0.08em",
-                    marginTop: "0.25rem",
+                    marginTop: "clamp(1.5rem, 4vh, 2.5rem)",
                   }}
                 >
-                  Geetika Gehlot
+                  Home
                 </span>
               </>
             ) : (
@@ -380,7 +368,7 @@ export function PageTransition() {
                     fontStyle: "italic",
                     color: "hsl(43 60% 55% / 0.65)",
                     letterSpacing: "0.08em",
-                    marginTop: "0.35rem",
+                    marginTop: "clamp(1.5rem, 4vh, 2.5rem)",
                   }}
                 >
                   Geetika Gehlot

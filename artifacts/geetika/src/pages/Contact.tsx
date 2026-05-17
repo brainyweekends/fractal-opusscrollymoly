@@ -59,8 +59,8 @@ function ContactBlock() {
 
   const channels: Array<{ icon: IconCmp; label: string; value: string; href?: string; num: string }> = [
     { icon: Mail,     label: "Email",    value: CONTACT_EMAIL,         href: `mailto:${CONTACT_EMAIL}`, num: "01" },
-    { icon: Linkedin, label: "LinkedIn", value: "/in/geetika-gehlot",  href: "https://www.linkedin.com/", num: "02" },
-    { icon: Github,   label: "GitHub",   value: "@geetika",            href: "https://github.com/", num: "03" },
+    { icon: Linkedin, label: "LinkedIn", value: "/in/geetika-gehlot",  href: "https://www.linkedin.com/in/geetika-gehlot", num: "02" },
+    { icon: Github,   label: "GitHub",   value: "@geetika",            href: "https://github.com/geetika", num: "03" },
     { icon: MapPin,   label: "Based in", value: "Montréal, QC",                                          num: "04" },
   ];
 
