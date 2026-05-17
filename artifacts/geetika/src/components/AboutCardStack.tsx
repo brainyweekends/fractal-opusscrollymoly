@@ -276,10 +276,10 @@ function ProfileCard({
   const bOp = lerp(0.18, 0.7, ep);
   const spr  = lerp(0, 90, ep);
   const gOp  = lerp(0, 0.18, ep);
-  const imgW = lerp(48, 112, ep);
+  const imgW = lerp(48, 104, ep);
   const PY   = lerp(20, 48, ep);
-  const PX   = lerp(22, 72, ep);
-  const W    = lerp(58, 100, ep);
+  const PX   = lerp(22, 64, ep);
+  const W    = lerp(58, 92, ep);
 
   return (
     <div
@@ -297,7 +297,7 @@ function ProfileCard({
       <div
         className="relative flex flex-col bg-[hsl(220_30%_7%)] border overflow-hidden"
         style={{
-          width: `${W}%`, maxWidth: "1280px",
+          width: `${W}%`, maxWidth: "1100px",
           height: `calc(100vh - ${lerp(88, 36, ep)}px)`,
           borderColor: `hsl(41 80% 60% / ${bOp})`,
           borderRadius: `${lerp(22, 14, ep)}px`,
@@ -312,7 +312,7 @@ function ProfileCard({
         ))}
 
         {/* Header */}
-        <header className="flex items-start gap-7 shrink-0" style={{ marginBottom: `${lerp(0, 34, ep)}px`, transition: "margin 0.8s cubic-bezier(0.22,1,0.36,1)" }}>
+        <header className="flex items-start gap-6 shrink-0" style={{ marginBottom: `${lerp(0, 30, ep)}px`, transition: "margin 0.8s cubic-bezier(0.22,1,0.36,1)" }}>
           <figure className="relative shrink-0 overflow-hidden border bg-[hsl(220_30%_10%)]"
             style={{ width: `${imgW}px`, aspectRatio: "3/4", borderColor: `hsl(41 80% 60%/${lerp(0.15, 0.45, ep)})`, transition: "width 0.8s cubic-bezier(0.22,1,0.36,1)" }}>
             <img src={heroPortrait} alt="Geetika" className="absolute inset-0 w-full h-full object-cover object-[60%_25%]" />
